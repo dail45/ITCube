@@ -21,7 +21,7 @@ const menuStore = useMenuStore();
       <NavigationMenuItem v-for="item in menuStore.menu">
         <div v-if="item.inner === null || item.inner === undefined">
           <NavigationMenuLink as-child>
-            <a :href="item.href" class="text-base">{{ item.title }}</a>
+            <a :href="item.href" class="block text-base select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">{{ item.title }}</a>
           </NavigationMenuLink>
         </div>
         <div v-else>
@@ -62,6 +62,10 @@ a, span {
   transition: 0.4s;
   padding: 8px 8px;
   border-radius: var(--radius);
+}
+
+span {
+  padding: 0 0;
 }
 
 @media (hover: hover) {
