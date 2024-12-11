@@ -3,24 +3,33 @@
 import {
   Carousel,
   CarouselContent,
-  CarouselItem
+  CarouselItem, CarouselNext, CarouselPrevious
 } from "@/components/ui/carousel";
 import {ref} from "vue";
 import {Skeleton} from "@/components/ui/skeleton";
+import Autoplay from 'embla-carousel-autoplay'
+import {Button} from "@/components/ui/button";
+import {Card, CardContent, CardFooter, CardHeader} from "@/components/ui/card";
 
 const images = ref([
   {src: "/public/carousel1.jpg", loading: true},
   {src: "/public/carousel2.jpg", loading: true},
   {src: "/public/carousel3.jpg", loading: true}
 ])
+
+const latest_news = ref([
+  {src: "/public/carousel1.jpg", loading: true, href: "/news/1", title: "Заголовок новости1", date: "11.01.2024"},
+  {src: "/public/carousel2.jpg", loading: true, href: "/news/2", title: "Заголовок новости2", date: "11.01.2024"},
+  {src: "/public/carousel3.jpg", loading: true, href: "/news/3", title: "Этот заголовок ну ооооооооооооооооооооооооооочеееееееееееееееееееееень длииииииииииииииинный", date: "11.01.2024"},
+])
+
 </script>
 
 <template>
   <Carousel v-slot="{ canScrollNext }"
-  :opts="{
-      loop: true
-  }" class="mt-2">
-    <CarouselContent class="w-full h-[678px] max-h-[678px] ml-0">
+            :opts="{ loop: true }"
+            :plugins="[Autoplay({ delay: 3000 })]" class="mt-2">
+    <CarouselContent class="w-full h-[500px] max-h-[500px] ml-0">
       <CarouselItem v-for="image in images" class="pl-0">
         <Skeleton v-if="image.loading" class="w-full h-full"></Skeleton>
         <img class="w-full h-full object-cover"
@@ -31,8 +40,73 @@ const images = ref([
       </CarouselItem>
     </CarouselContent>
   </Carousel>
+
+  <div id="latest-news" class="mt-10 w-full">
+    <div class="flex justify-between">
+      <span>Последние новости</span>
+      <Button class="thirdly">Посмотреть больше</Button>
+    </div>
+    <div class="grid grid-cols-3 gap-[60px] mt-6">
+      <Card v-for="news in latest_news" class="news-card flex flex-col">
+        <CardHeader class="p-0">
+          <img :src="news.src" class="w-full">
+        </CardHeader>
+        <CardContent class="p-6 pt-2 pb-2 flex-1">
+          <span class="break-words line-clamp-2">{{ news.title }}</span>
+        </CardContent>
+        <CardFooter class="p-6 pb-4 pt-0">
+          <div class="flex w-full justify-between items-center">
+            <span>{{ news.date }}</span>
+            <Button class="thirdly">Подробнее</Button>
+          </div>
+        </CardFooter>
+      </Card>
+    </div>
+  </div>
+
+  <div id="about-div" class="w-full mt-6 pt-[32px] pl-[40px] pr-[40px] pb-[32px] flex flex-row">
+    <img src="/public/logo2.png" id="about-img" class="max-w-[200px] mr-[40px]">
+    <div>
+      <h1 class="text-[48px] font-bold">
+        О центре
+      </h1>
+      <span class="text-[32px]">
+        Центр цифрового образования детей "IT-КУБ.КУРГАН" – подразделение Курганского технологического колледжа, осуществляющее обучение по дополнительным общеразвивающим программам, направленным на интеллектуальное развитие детей и подростков в сфере современных информационных и телекоммуникационных технологий.
+      </span>
+    </div>
+  </div>
+
+
+
+  <div class="h-[100vh]"></div>
 </template>
 
 <style scoped>
+
+#about-div {
+  background-image: url("/public/cube.svg");
+  background-size: 50%;
+  background-color: hsl(var(--additionary));
+  border-radius: var(--radius);
+  color: hsl(var(--primary-foreground));
+}
+
+#about-img {
+  object-fit: contain;
+  justify-content: center;
+}
+
+.news-card {
+  box-shadow: 0px 2px 4px 0px rgba(174, 174, 174, 0.25);
+  img {
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+  }
+}
+
+.thirdly {
+  background-color: hsl(var(--thirdly));
+  color: hsl(var(--thirdly-foreground));
+}
 
 </style>

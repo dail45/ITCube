@@ -17,8 +17,8 @@ const images = ref([]);
 
 <template>
   <MdEditor language="ru" v-model="content">
-
   </MdEditor>
+
 </template>
 
 <style scoped>
