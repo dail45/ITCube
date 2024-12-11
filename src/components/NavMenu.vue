@@ -9,69 +9,27 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import "@/assets/base.css"
-import {useDirectionStore} from "@/stores/direction.ts";
+import {useMenuStore} from "@/stores/menu.ts";
 
-const directionStore = useDirectionStore();
-const menu = [
-  {
-    title: "Новости",
-    href: "/news",
-    description: null,
-    inner: null
-  },
-  {
-    title: "О направлениях",
-    href: null,
-    description: null,
-    inner: directionStore.directions.map(direction => ({
-      title: direction.label,
-      href: direction.href,
-      description: direction.description
-    }))
-  },
-  {
-    title: "О центре",
-    href: "/about",
-    description: null,
-    inner: [
-      {
-        title: "Документы",
-        href: "/docs",
-        description: "Documents"
-      },
-      {
-        title: "Руководство",
-        href: "/guides",
-        description: "Guides"
-      },
-      {
-        title: "Преподавательский состав",
-        href: "/teachers",
-        description: "Teachers"
-      }
-    ]
-  },
-  {
-    title: "Контакты",
-    href: "/contacts",
-    description: null,
-    inner: null
-  }
-]
+const menuStore = useMenuStore();
+
 </script>
 
 <template>
   <NavigationMenu>
     <NavigationMenuList>
-      <NavigationMenuItem v-for="item in menu">
+      <NavigationMenuItem v-for="item in menuStore.menu">
         <div v-if="item.inner === null || item.inner === undefined">
           <NavigationMenuLink as-child>
             <a :href="item.href" class="text-base">{{ item.title }}</a>
           </NavigationMenuLink>
         </div>
         <div v-else>
-          <NavigationMenuTrigger class="text-base select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-            {{ item.title }}
+          <NavigationMenuTrigger
+              class="text-base select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+            <span>
+              {{ item.title }}
+            </span>
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul class="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
@@ -98,19 +56,18 @@ const menu = [
 
 <style scoped>
 
-a, .NavigationMenuTrigger {
+a, span {
   text-decoration: none;
-  color: hsla(var(--primary-foreground), 1);
+  color: hsla(var(--primary2), 1);
   transition: 0.4s;
-  padding: 10px 8px;
+  padding: 8px 8px;
   border-radius: var(--radius);
 }
 
 @media (hover: hover) {
   a:hover {
-    background-color: hsla(var(--primary), 0.2);
+    background-color: hsla(var(--primary2), 0.2);
   }
-
 }
 
 </style>

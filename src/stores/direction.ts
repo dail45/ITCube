@@ -44,6 +44,6 @@ export const useDirectionStore = defineStore('direction', () => {
         description: "Разработка приложений для виртуальной и дополненной реальности.",
         href: "/directions/vr-ar"
     });
-
+    console.log(directions.value);
     return {directions}
 })

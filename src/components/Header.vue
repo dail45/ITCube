@@ -2,6 +2,7 @@
 
 import {Button} from "@/components/ui/button";
 import NavMenu from "@/components/NavMenu.vue";
+import SidebarMenu from "@/components/SidebarMenu.vue";
 </script>
 
 <template>
@@ -11,7 +12,8 @@ import NavMenu from "@/components/NavMenu.vue";
       <Button class="ml-auto sm:ml-0">Записаться</Button>
     </div>
     <div class="container flex items-center justify-center">
-      <NavMenu />
+      <NavMenu class="hidden sm:flex" />
+      <SidebarMenu class="sm:hidden mr-auto" />
     </div>
   </div>
 </template>
