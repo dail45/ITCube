@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import {Button} from "@/components/ui/button";
+import NavMenu from "@/components/NavMenu.vue";
 </script>
 
 <template>
@@ -8,6 +9,9 @@ import {Button} from "@/components/ui/button";
     <div class="container flex pt-[30px] pb-[20px] items-center justify-between flex-col sm:flex-row">
       <img class="max-h-[100px] mr-auto sm:mr-0" src="/public/logo4.png">
       <Button class="ml-auto sm:ml-0">Записаться</Button>
+    </div>
+    <div class="container flex items-center justify-center">
+      <NavMenu />
     </div>
   </div>
 </template>
