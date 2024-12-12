@@ -28,7 +28,7 @@ const latest_news = ref([
 <template>
   <Carousel v-slot="{ canScrollNext }"
             :opts="{ loop: true }"
-            :plugins="[Autoplay({ delay: 3000 })]" class="mt-2">
+            :plugins="[Autoplay({ delay: 3000 })]">
     <CarouselContent class="w-full h-[500px] max-h-[500px] ml-0">
       <CarouselItem v-for="image in images" class="pl-0">
         <Skeleton v-if="image.loading" class="w-full h-full"></Skeleton>
@@ -42,11 +42,11 @@ const latest_news = ref([
   </Carousel>
 
   <div id="latest-news" class="mt-10 w-full">
-    <div class="flex justify-between">
-      <span>Последние новости</span>
+    <div class="flex justify-between items-center">
+      <span class="text-[24px]">Последние новости</span>
       <Button class="thirdly">Посмотреть больше</Button>
     </div>
-    <div class="grid grid-cols-3 gap-[60px] mt-6">
+    <div class="grid grid-rows-3 lg:grid-cols-3 gap-[60px] mt-6">
       <Card v-for="news in latest_news" class="news-card flex flex-col">
         <CardHeader class="p-0">
           <img :src="news.src" class="w-full">
@@ -76,9 +76,6 @@ const latest_news = ref([
     </div>
   </div>
 
-
-
-  <div class="h-[100vh]"></div>
 </template>
 
 <style scoped>

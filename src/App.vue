@@ -7,9 +7,10 @@ import Footer from '@/components/Footer.vue'
 
 <template>
   <Header />
-  <div class="container w-full">
+  <div class="container w-full flex-1 mt-6 mb-6">
     <RouterView />
   </div>
+  <Footer />
 </template>
 
 <style scoped>

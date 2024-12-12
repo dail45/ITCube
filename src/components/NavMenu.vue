@@ -16,7 +16,7 @@ const menuStore = useMenuStore();
 </script>
 
 <template>
-  <NavigationMenu>
+  <NavigationMenu orientation="vertical">
     <NavigationMenuList>
       <NavigationMenuItem v-for="item in menuStore.menu">
         <div v-if="item.inner === null || item.inner === undefined">
