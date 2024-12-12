@@ -37,4 +37,8 @@ const teacher = props.teacher;
 
 <style scoped>
 
+img {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
 </style>

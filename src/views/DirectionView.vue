@@ -33,7 +33,7 @@ axiosClient.get("/study/" + props.refId).then(rsp => {
     <ProgramComponent :program="program" v-for="program in info.programs" />
   </div>
   <h2>Преподаватели</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6 gap-[20px]">
     <TeacherComponent :teacher="teacher" v-for="teacher in info.instructors" />
   </div>
 </template>
