@@ -10,12 +10,30 @@ import {Skeleton} from "@/components/ui/skeleton";
 import Autoplay from 'embla-carousel-autoplay'
 import {Button} from "@/components/ui/button";
 import {Card, CardContent, CardFooter, CardHeader} from "@/components/ui/card";
+import NewsEditor from "@/components/NewsEditor.vue";
+import DirectionComponent from "@/components/directions/DirectionComponent.vue";
+import {useDirectionStore} from "@/stores/direction.ts";
+import {axiosClient} from "@/axiosclientbase.ts";
+import {useRouter} from "vue-router";
+import {goToLink} from "@/lib/utils.ts";
+import {baseURL} from "@/constants.ts";
 
-const images = ref([
-  {src: "/public/carousel1.jpg", loading: true},
-  {src: "/public/carousel2.jpg", loading: true},
-  {src: "/public/carousel3.jpg", loading: true}
-])
+const router = useRouter()
+
+const announcements = ref([])
+
+axiosClient.get("/announcements").then(rsp => {
+  console.log(rsp.data)
+  if (rsp.status === 200) {
+    rsp.data.forEach(announcement => {
+      announcements.value.push(announcement)
+    });
+  }
+});
+
+const directionStore = useDirectionStore();
+
+
 
 const latest_news = ref([
   {src: "/public/carousel1.jpg", loading: true, href: "/news/1", title: "Заголовок новости1", date: "11.01.2024"},
@@ -30,12 +48,9 @@ const latest_news = ref([
             :opts="{ loop: true }"
             :plugins="[Autoplay({ delay: 3000 })]">
     <CarouselContent class="w-full h-[500px] max-h-[500px] ml-0">
-      <CarouselItem v-for="image in images" class="pl-0">
-        <Skeleton v-if="image.loading" class="w-full h-full"></Skeleton>
+      <CarouselItem v-for="announcement in announcements" class="pl-0">
         <img class="w-full h-full object-cover"
-             :src="image.src"
-             @load="image.loading = false"
-             @error="image.loading = false"
+             :src="baseURL + announcement.media.fileUri" @click="goToLink(router, announcement.url)"
         >
       </CarouselItem>
     </CarouselContent>
@@ -74,6 +89,10 @@ const latest_news = ref([
         Центр цифрового образования детей "IT-КУБ.КУРГАН" – подразделение Курганского технологического колледжа, осуществляющее обучение по дополнительным общеразвивающим программам, направленным на интеллектуальное развитие детей и подростков в сфере современных информационных и телекоммуникационных технологий.
       </span>
     </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-[20px] mt-6">
+    <DirectionComponent v-for="direction in directionStore.directions" :direction="direction"></DirectionComponent>
   </div>
 
 </template>

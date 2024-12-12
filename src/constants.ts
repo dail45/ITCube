@@ -1,0 +1,1 @@
+export const baseURL = "https://wm2n36tm-8080.euw.devtunnels.ms/"

@@ -21,9 +21,9 @@ const menuStore = useMenuStore();
 </script>
 
 <template>
-  <div class="w-full bg-primary bg-cube">
+  <div class="w-full bg-primary bg-cube pb-[32px]" style="border-radius: 0">
     <div
-        class="container flex flex-row items-center justify-between relative pt-4">
+        class="container flex flex-row items-center relative pt-4 gap-[40px]">
       <div
           class="flex flex-row gap-2.5 items-center justify-start shrink-0 relative">
         <img

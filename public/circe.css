@@ -1,6 +1,6 @@
 @font-face {
 	font-weight: 100;
-	font-family: 'Circe Thin';
+	font-family: 'Circe';
 	src: url('/public/fonts/circe_thin.eot'); /* IE 9 Compatibility Mode */
 	src: url('/public/fonts/circe_thin.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
 		url('/public/fonts/circe_thin.woff2') format('woff2'), /* Super Modern Browsers */
@@ -63,8 +63,3 @@
 		url('/public/fonts/circe_extrabold.ttf') format('truetype'), /* Safari, Android, iOS */
 		url('/public/fonts/circe_extrabold.svg#circe_extrabold') format('svg'); /* Chrome < 4, Legacy iOS */
 }
-
-
-
-
-
