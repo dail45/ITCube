@@ -24,6 +24,16 @@ const router = createRouter({
       name: 'directions',
       component: () => import('../views/DirectionView.vue'),
       props: true
+    },
+    {
+      path: '/news',
+      name: 'allnews',
+      component: () => import('../views/AllNewsView.vue'),
+    },
+    {
+      path: '/contacts',
+      name: 'allnews',
+      component: () => import('../views/Contacts.vue'),
     }
   ],
 })

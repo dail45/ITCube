@@ -1,6 +1,9 @@
 <script setup lang="ts">
 
 import {Button} from "@/components/ui/button";
+import {useRouter} from "vue-router";
+import {goToLink} from "@/lib/utils.ts";
+import {baseURL} from "@/constants.ts";
 
 const props = defineProps<{
   program: {
@@ -15,6 +18,8 @@ const props = defineProps<{
     }
   }
 }>()
+
+const router = useRouter();
 const program = props.program
 </script>
 
@@ -22,11 +27,11 @@ const program = props.program
   <div class="p-[20px] flex flex-row justify-between border-1 items-center">
     <span>{{ program.title }}</span>
     <div class="flex flex-row gap-[20px]">
-      <Button variant="outline" class="pdf-btn">
+      <Button variant="outline" class="pdf-btn" @click="goToLink(router, baseURL + program.document.fileUri)">
         <span>Рассписание</span>
         <span class="pdf-span">PDF</span>
       </Button>
-      <Button>
+      <Button @click="goToLink(router, 'https://xn--45-kmc.xn--80aafey1amqq.xn--d1acj3b/')">
         <span>Записаться</span>
       </Button>
     </div>
