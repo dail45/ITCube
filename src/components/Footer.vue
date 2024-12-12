@@ -21,7 +21,7 @@ const menuStore = useMenuStore();
 </script>
 
 <template>
-  <div class="w-full bg-thirdly">
+  <div class="w-full bg-primary bg-cube">
     <div
         class="container flex flex-row items-center justify-between relative pt-4">
       <div
@@ -29,7 +29,7 @@ const menuStore = useMenuStore();
         <img
             class="shrink-0 w-[130px] h-[130px] relative"
             style="object-fit: cover"
-            src="/public/logo3.png"
+            src="/public/logo2.png"
         />
       </div>
       <div
@@ -37,7 +37,7 @@ const menuStore = useMenuStore();
         <div
             class="pr-4 pl-4 flex flex-row gap-2.5 items-center justify-center self-stretch shrink-0 relative">
           <div
-              class="text-[#000000] text-left font-['Inter-Bold',_sans-serif] text-base leading-6 font-bold relative flex-1">
+              class="text-left font-['Inter-Bold',_sans-serif] text-base leading-6 font-bold relative flex-1">
             Разделы сайта
           </div>
         </div>
@@ -105,5 +105,12 @@ const menuStore = useMenuStore();
 <style scoped>
 .bg-thirdly {
   background-color: hsl(var(--thirdly));
+}
+.bg-cube {
+  background-image: url("/public/cube.svg");
+  background-size: 50%;
+  background-color: hsl(var(--additionary));
+  border-radius: var(--radius);
+  color: hsl(var(--primary-foreground));
 }
 </style>

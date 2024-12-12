@@ -12,7 +12,7 @@ import SidebarMenu from "@/components/SidebarMenu.vue";
       <img class="max-h-[100px] mr-auto" style="@media (min-width: 486px) {
         margin-right: 0;
       }" src="/public/logo4.png">
-      <Button class="ml-auto" style="@media (min-width: 486px) {
+      <Button class="ml-auto pl-[40px] pt-[16px] pr-[40px] pb-[16px] font-bold" style="@media (min-width: 486px) {
         margin-left: 0;
       }">Записаться
       </Button>

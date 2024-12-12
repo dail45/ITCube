@@ -46,17 +46,17 @@ const latest_news = ref([
       <span class="text-[24px]">Последние новости</span>
       <Button class="thirdly">Посмотреть больше</Button>
     </div>
-    <div class="grid grid-rows-3 lg:grid-cols-3 gap-[60px] mt-6">
+    <div class="grid grid-rows-3 lg:grid-rows-1 lg:grid-cols-3 gap-[60px] mt-6">
       <Card v-for="news in latest_news" class="news-card flex flex-col">
         <CardHeader class="p-0">
           <img :src="news.src" class="w-full">
         </CardHeader>
-        <CardContent class="p-6 pt-2 pb-2 flex-1">
+        <CardContent class="p-4 pt-2 pb-2 flex-1">
           <span class="break-words line-clamp-2">{{ news.title }}</span>
         </CardContent>
-        <CardFooter class="p-6 pb-4 pt-0">
+        <CardFooter class="p-4 pb-4 pt-0">
           <div class="flex w-full justify-between items-center">
-            <span>{{ news.date }}</span>
+            <span class="text-secondary">{{ news.date }}</span>
             <Button class="thirdly">Подробнее</Button>
           </div>
         </CardFooter>
